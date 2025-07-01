@@ -1,0 +1,110 @@
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { NAV_LINKS } from "@/assets/static-data";
+import { cn } from "@/lib/utils";
+import { logo } from "@/assets";
+import Image from "next/image";
+import { ModeToggle } from "../theme/mode-toggle";
+
+function Navbar() {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <nav
+      className={`${
+        isScrolled ? "bg-black" : ""
+      } sticky top-0 z-50 border-b shadow-sm `}
+    >
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <Link href={"/"}>
+          <Image className="w-34" src={logo} height={100} width={100} />
+        </Link>
+
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex space-x-6 text-sm font-medium text-muted-foreground">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={cn(
+                  "transition-colors hover:text-primary",
+                  pathname === link.href ? "text-primary font-semibold" : ""
+                )}
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA Button */}
+        <div className="hidden md:flex">
+          <div className="flex items-center gap-2">
+            <ModeToggle />
+            <Button asChild>
+              <Link href="/#demo">Book a Demo</Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Toggle Button */}
+        <button
+          className="md:hidden p-2 text-gray-600"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white dark:bg-black shadow-md px-4 py-4">
+          <ul className="flex flex-col space-y-3 text-sm text-muted-foreground">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "block transition-colors hover:text-primary",
+                    pathname === link.href ? "text-primary font-semibold" : ""
+                  )}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Button asChild className="w-full mt-3">
+                <Link href="/#demo">Book a Demo</Link>
+              </Button>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+export default Navbar;
