@@ -13,6 +13,7 @@ function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,10 +31,24 @@ function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const updateHash = () => {
+      setActiveHash(window.location.hash);
+    };
+
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+
+    // Cleanup
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, [activeHash]);
+
+  console.log(activeHash)
+
   return (
     <nav
       className={`${
-        isScrolled ? "bg-black" : ""
+        isScrolled ? "dark:bg-black bg-white" : ""
       } sticky top-0 z-50 border-b shadow-sm `}
     >
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -88,7 +103,7 @@ function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block transition-colors hover:text-primary",
-                    pathname === link.href ? "text-primary font-semibold" : ""
+                    activeHash === link.href ? "text-primary font-semibold" : ""
                   )}
                 >
                   {link.name}
