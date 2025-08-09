@@ -1,7 +1,6 @@
 // app/components/footer.tsx
-"use client"
-
-import Link from "next/link"
+"use client";
+import Link from "next/link";
 import {
   Facebook,
   Twitter,
@@ -9,7 +8,7 @@ import {
   MapPin,
   Phone,
   Mail,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -19,7 +18,8 @@ export default function Footer() {
         <div>
           <h2 className="text-xl font-bold mb-2 text-primary">Amaanah</h2>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Streamlining restaurant operations with smart, scalable, and secure software – built for the modern food business.
+            Restaurant management problems? Amaanah EPOS is the solution to all
+            your oddly specific nightmares.
           </p>
           <div className="flex gap-4 mt-4 text-muted-foreground">
             <Link href="#" aria-label="Facebook">
@@ -36,43 +36,79 @@ export default function Footer() {
 
         {/* Column 2 - Quick Links */}
         <div>
-          <h3 className="text-sm font-semibold mb-3 text-foreground">Quick Links</h3>
+          <h3 className="text-sm font-semibold mb-3 text-foreground">
+            Quick Links
+          </h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><Link href="#features" className="hover:text-primary">Features</Link></li>
-            <li><Link href="#about" className="hover:text-primary">About</Link></li>
-            <li><Link href="#contact" className="hover:text-primary">Contact</Link></li>
-            <li><Link href="#terms" className="hover:text-primary">Terms & Conditions</Link></li>
+            <li>
+              <Link href="#features" className="hover:text-primary">
+                Features
+              </Link>
+            </li>
+            <li>
+              <Link href="#pricing" className="hover:text-primary">
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-primary">
+                Book A Demo
+              </Link>
+            </li>
+            <li>
+              <Link href="#contact" className="hover:text-primary">
+                Get In Touch
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Column 3 - Contact Info */}
         <div>
-          <h3 className="text-sm font-semibold mb-3 text-foreground">Contact</h3>
+          <h3 className="text-sm font-semibold mb-3 text-foreground">
+            Contact
+          </h3>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              123 Amaanah Street, Dhaka, BD
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              +880-123-456789 (Support)
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              +880-987-654321 (Sales)
+              48-50 St. Augustines Street, Norwich, United Kingdom, NR3 3AD
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              hello@amaanah.com
+              amaanahsoft@gmail.com
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              0330 390 4240
             </li>
           </ul>
         </div>
       </div>
-
-      {/* Bottom Note */}
-      <div className="mt-10 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Amaanah. All rights reserved.
+      <div className="text-muted-foreground text-xs mt-16 px-4 text-center">
+        <div>
+          <p>
+            Amaanah EPOS Solutions is one of the trading names of Ar-Razzaakh
+            LTD; Registered in England and Wales under company number 16272939.
+            Registered office address: 48-50 St. Augustines Street, Norwich,
+            United Kingdom, NR3 3AD.
+          </p>
+          <p className="mt-2">
+            By continuing to use our website you consent to us storing cookies.
+            For further information, see our{" "}
+            <Link href="/privacy-policy" className="text-primary underline">
+              Privacy Policy
+            </Link>{" "}
+            here. You can also view our{" "}
+            <Link href="/terms-and-conditions" className="text-primary underline">
+              Terms and Conditions
+            </Link>{" "}
+            here.
+          </p>
+        </div>
+        <div className="text-center mt-5 text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Amaanah. All rights reserved.
+        </div>
       </div>
     </footer>
-  )
+  );
 }

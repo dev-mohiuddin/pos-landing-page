@@ -123,12 +123,12 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 tracking-tight">
-            Manage Your Entire Restaurant –{" "}
-            <span className="text-primary">Smarter, Faster, Simpler.</span>
+            You asked for it. We coded it –{" "}
+            <span className="text-primary">Amaanah EPOS Solutions.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8">
-            All-in-one restaurant management software for seamless operations,
-            real-time insights, and better customer service.
+            Restaurant management problems? Amaanah EPOS is the solution to all
+            your oddly specific nightmares.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">

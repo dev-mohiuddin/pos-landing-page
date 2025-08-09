@@ -9,68 +9,114 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full  py-20 bg-muted/5 bg-gradient-to-br from-blue-50 via-primary/10 to-pink-50 dark:from-neutral-950 dark:via-gray-950/50 dark:to-black text-foreground px-4 md:px-8"
+      className="w-full py-20 bg-muted/5 bg-gradient-to-br from-blue-50 via-primary/10 to-pink-50 dark:from-neutral-950 dark:via-gray-950/50 dark:to-black text-foreground px-4 md:px-8"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold">Get in Touch</h2>
+          <h2 className="text-3xl font-bold">Get in Touch </h2>
           <p className="text-muted-foreground text-sm md:text-base">
             We'd love to hear from you. Whether you're curious about features, a
-            free trial, or even press—we're ready to answer any and all
-            questions.
+            free trial, or even press—we're ready to answer any questions.
           </p>
 
           <div className="space-y-4 text-sm text-muted-foreground">
             <p className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-primary" />
-              hello@amaanah.com
+              amaanahsoft@gmail.com
             </p>
             <p className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-primary" />
-              +880-123-456789
+        0330 390 4240 
             </p>
             <p className="flex items-center gap-3">
               <MapPin className="w-4 h-4 text-primary" />
-              123 Amaanah Street, Dhaka, Bangladesh
+              48-50 St. Augustines Street, Norwich, United Kingdom, NR3 3AD
             </p>
           </div>
         </div>
 
-        {/* Contact Form */}
+        {/* Booking Form */}
         <form className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-1">
-              Your Name
-            </label>
-            <Input id="name" placeholder="Enter your name" className="w-full" />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email Address
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium mb-1"
+            >
+              Full Name *
             </label>
             <Input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
+              id="fullName"
+              placeholder="Enter your full name"
+              required
               className="w-full"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-1">
-              Message
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Email Address *
             </label>
-            <Textarea
-              id="message"
-              placeholder="Write your message here..."
-              className="w-full h-32"
+            <Input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              className="w-full"
             />
           </div>
 
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium mb-1">
+              Phone Number *
+            </label>
+            <Input
+              id="phone"
+              type="tel"
+              placeholder="+880-123-456789"
+              required
+              className="w-full"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium mb-1">
+              Company / Trading Name *
+            </label>
+            <Input
+              id="company"
+              placeholder="Your company or trading name"
+              required
+              className="w-full"
+            />
+          </div>
+
+          {/* <div>
+            <label
+              htmlFor="preferredDays"
+              className="block text-sm font-medium mb-1"
+            >
+              Preferred days and times in a week
+            </label>
+            <Textarea
+              id="preferredDays"
+              placeholder="E.g., Monday & Wednesday, afternoons"
+              className="w-full h-24"
+            />
+          </div> */}
+          {/* 
+          <div>
+            <label
+              htmlFor="nextAvailable"
+              className="block text-sm font-medium mb-1"
+            >
+              Next available day
+            </label>
+            <Input id="nextAvailable" type="date" className="w-full" />
+          </div> */}
+
           <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">
-            Send Message
+            Book Demo
           </Button>
         </form>
       </div>

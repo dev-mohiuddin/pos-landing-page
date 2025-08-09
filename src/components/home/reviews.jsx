@@ -1,4 +1,4 @@
-// app/components/testimonial.tsx
+// app/components/Reviews.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
-const testimonials = [
+const reviews = [
   {
     name: "Md. Saif Uddin",
     outlet: "BurgerXpress, Dhaka",
@@ -36,10 +36,10 @@ const testimonials = [
   },
 ];
 
-export default function Testimonial() {
+export default function Reviews() {
   return (
     <section
-      id="testimonials"
+      id="reviews"
       className="relative py-20 "
     >
       <div className="container mx-auto px-4 text-center">
@@ -59,7 +59,7 @@ export default function Testimonial() {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((item, index) => (
+          {reviews.map((item, index) => (
             <motion.div
               key={index}
               className="bg-background rounded-2xl p-6 shadow-lg border hover:shadow-xl transition-all duration-300"
