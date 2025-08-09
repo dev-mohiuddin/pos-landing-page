@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black border-t border-border text-foreground py-10 px-4 md:px-8">
+    <footer className="w-full dark:bg-black border-t border-border text-foreground py-10 px-4 md:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Column 1 - Branding */}
         <div>
