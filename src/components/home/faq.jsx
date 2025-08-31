@@ -32,38 +32,29 @@ export default function FAQ() {
             Do I need a Wi-Fi connection to run the system?
           </AccordionTrigger>
           <AccordionContent className={"text-muted-foreground"}>
-            Our EPOS is cloud-based. Meaning a strong Wi-Fi connection is all
-            you need to ensure smoother operation.
+            Our EPOS is cloud-based. Meaning a Wi-Fi connection is all you need
+            to ensure smoother operation.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-2">
-          <AccordionTrigger>Can I use this software offline?</AccordionTrigger>
+          <AccordionTrigger>What if my EPOS malfunctions?</AccordionTrigger>
           <AccordionContent className={"text-muted-foreground"}>
-            While our software is cloud-based and optimized for online use,
-            certain functions such as order taking and billing can work offline.
-            Once internet is restored, data automatically syncs with the server.
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="item-3">
-          <AccordionTrigger>What if my EPOS malfunctions? </AccordionTrigger>
-          <AccordionContent className={"text-muted-foreground"}>
-            You have full confidence with a minimum 12-month warranty on all
+            You have full confidence with a minimum 12-month warranty on our
             hardware. What’s more, our team are always on the helpline for any
             hardware or software concerns.
           </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value="item-4">
-          <AccordionTrigger>How do I set up my EPOS? </AccordionTrigger>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>How do I set up my EPOS?</AccordionTrigger>
           <AccordionContent className={"text-muted-foreground"}>
             Leave the set-up to us. We’ll also make sure you know exactly how to
             navigate your new system.
           </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value="item-5">
+        <AccordionItem value="item-4">
           <AccordionTrigger>
             How long is the wait until the first transaction?{" "}
           </AccordionTrigger>
@@ -72,6 +63,16 @@ export default function FAQ() {
             the incredible features we offer.
           </AccordionContent>
         </AccordionItem>
+
+        {/* <AccordionItem value="item-5">
+          <AccordionTrigger>
+            How long is the wait until the first transaction?{" "}
+          </AccordionTrigger>
+          <AccordionContent className={"text-muted-foreground"}>
+            No wait at all. We set up your system and you run your shop with all
+            the incredible features we offer.
+          </AccordionContent>
+        </AccordionItem> */}
       </Accordion>
     </section>
   );

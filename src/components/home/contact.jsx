@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold">Get in Touch </h2>
+          <h2 className="text-3xl font-bold">Why Choose Us</h2>
           <p className="text-muted-foreground text-sm md:text-base">
             We'd love to hear from you. Whether you're curious about features, a
             free trial, or even press—we're ready to answer any questions.
@@ -27,7 +27,7 @@ export default function Contact() {
             </p>
             <p className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-primary" />
-        0330 390 4240 
+              0330 390 4240
             </p>
             <p className="flex items-center gap-3">
               <MapPin className="w-4 h-4 text-primary" />
@@ -80,43 +80,40 @@ export default function Contact() {
           </div>
 
           <div>
-            <label htmlFor="company" className="block text-sm font-medium mb-1">
-              Company / Trading Name *
+            <label
+              htmlFor="address1"
+              className="block text-sm font-medium mb-1"
+            >
+              Address Line 1 *
             </label>
             <Input
-              id="company"
-              placeholder="Your company or trading name"
+              id="address1"
+              type="text"
+              placeholder="House/Road no."
               required
               className="w-full"
             />
           </div>
 
-          {/* <div>
-            <label
-              htmlFor="preferredDays"
-              className="block text-sm font-medium mb-1"
-            >
-              Preferred days and times in a week
-            </label>
-            <Textarea
-              id="preferredDays"
-              placeholder="E.g., Monday & Wednesday, afternoons"
-              className="w-full h-24"
-            />
-          </div> */}
-          {/* 
           <div>
             <label
-              htmlFor="nextAvailable"
+              htmlFor="address2"
               className="block text-sm font-medium mb-1"
             >
-              Next available day
+              Address Line 2
             </label>
-            <Input id="nextAvailable" type="date" className="w-full" />
-          </div> */}
+            <Input
+              id="address2"
+              type="text"
+              placeholder="City, State, Zip Code"
+              className="w-full"
+            />
+          </div>
+
+   
 
           <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">
-            Book Demo
+            Submit
           </Button>
         </form>
       </div>

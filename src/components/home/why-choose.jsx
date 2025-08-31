@@ -1,31 +1,40 @@
 // app/components/why-choose-us.tsx
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { LucideSmile, LucideShieldCheck, LucideSettings2, LucideBarChart } from "lucide-react"
+import { motion } from "framer-motion";
+import {
+  LucideSmile,
+  LucideShieldCheck,
+  LucideSettings2,
+  LucideBarChart,
+} from "lucide-react";
 
 const benefits = [
   {
     title: "Easy to Use",
-    description: "No learning curve – our simple UX works for everyone on your team.",
+    description:
+      "No learning curve – our simple UX works for everyone on your team.",
     icon: LucideSmile,
   },
   {
     title: "Secure & Reliable",
-    description: "Cloud-based infrastructure ensures speed, safety, and uptime you can trust.",
+    description:
+      "Cloud-based infrastructure ensures speed, safety, and uptime you can trust.",
     icon: LucideShieldCheck,
   },
   {
     title: "Fully Customizable",
-    description: "Adapt the system to your restaurant's exact needs and branding.",
+    description:
+      "Adapt the system to your restaurant's exact needs and branding.",
     icon: LucideSettings2,
   },
   {
     title: "Data-Driven Insights",
-    description: "Real-time reports, alerts, and dashboards to help you grow smarter.",
+    description:
+      "Real-time reports, alerts, and dashboards to help you grow smarter.",
     icon: LucideBarChart,
   },
-]
+];
 
 export default function WhyChooseUs() {
   return (
@@ -36,13 +45,14 @@ export default function WhyChooseUs() {
             Why Choose Us
           </h2>
           <p className="text-muted-foreground">
-            Discover how our restaurant management system helps you save time, cut costs, and delight your customers.
+            Discover how our hospitality management system helps you save time,
+            cut costs, and delight your customers.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => {
-            const Icon = benefit.icon
+            const Icon = benefit.icon;
             return (
               <motion.div
                 key={index}
@@ -56,14 +66,18 @@ export default function WhyChooseUs() {
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  <h3 className="text-lg font-semibold mb-1">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {benefit.description}
+                  </p>
                 </div>
               </motion.div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -22,7 +22,7 @@ export default function AboutUs() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Our team is made of experts on small to medium-sized businesses,
+              Our team is made of experts on small to large scale businesses,
               with thousands of customers in our client network built over the
               past fifteen years. Although our story started with payment
               processing, we could see the growing need for EPOS solutions
@@ -48,7 +48,7 @@ export default function AboutUs() {
             <AnimatedCard
               icon={<Clock3 className="w-8 h-8 text-primary" />}
               title="15+ Years Industry Experience"
-              desc="Amaanah EPOS is the result of years of careful observation."
+              desc="Amaanah's EPOS is the result of years of careful observation."
             />
             <AnimatedCard
               icon={<Users2 className="w-8 h-8 text-primary" />}

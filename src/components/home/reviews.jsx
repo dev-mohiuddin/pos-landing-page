@@ -38,10 +38,7 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section
-      id="reviews"
-      className="relative py-20 "
-    >
+    <section id="reviews" className="relative py-20 ">
       <div className="container mx-auto px-4 text-center">
         {/* Section Heading */}
         <motion.h2
@@ -53,8 +50,8 @@ export default function Reviews() {
           What Our Customers Are Saying
         </motion.h2>
         <p className="text-muted-foreground max-w-xl mx-auto mb-12">
-          Real feedback from restaurant owners who transformed their business
-          with our software.
+          A word from the ones who transformed their businesses with our
+          software. (Our clients)
         </p>
 
         {/* Testimonials Grid */}

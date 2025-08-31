@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/assets/static-data";
 import { cn } from "@/lib/utils";
-import { logo } from "@/assets";
+import { logo, blackLogo, whiteLogo } from "@/assets";
+import DemoDialog from "../common/demo-dialog";
 import Image from "next/image";
 import { ModeToggle } from "../theme/mode-toggle";
 
@@ -13,6 +14,7 @@ function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDemo, setIsOpenDemo] = useState(false);
   const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
@@ -43,7 +45,7 @@ function Navbar() {
     return () => window.removeEventListener("hashchange", updateHash);
   }, [activeHash]);
 
-  console.log(activeHash)
+  console.log(activeHash);
 
   return (
     <nav
@@ -53,9 +55,21 @@ function Navbar() {
     >
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href={"/"}>
-          <Image className="w-34" src={logo} height={100} width={100} />
+          <Image
+            className="w-34 hidden dark:block"
+            src={whiteLogo}
+            height={100}
+            width={100}
+            alt="Dark Logo"
+          />
+          <Image
+            className="w-34 block dark:hidden"
+            src={blackLogo}
+            height={100}
+            width={100}
+            alt="Light Logo"
+          />
         </Link>
-
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex space-x-6 text-sm font-medium text-muted-foreground">
           {NAV_LINKS.map((link) => (
@@ -77,9 +91,8 @@ function Navbar() {
         <div className="hidden md:flex">
           <div className="flex items-center gap-2">
             <ModeToggle />
-            <Button asChild>
-              <Link href="/#demo">Book a Demo</Link>
-            </Button>
+            <Button onClick={() => setIsOpenDemo(true)}>Book a Demo</Button>
+            <DemoDialog open={isOpenDemo} onOpenChange={setIsOpenDemo} />
           </div>
         </div>
 

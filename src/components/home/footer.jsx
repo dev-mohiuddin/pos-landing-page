@@ -13,7 +13,7 @@ import {
 export default function Footer() {
   return (
     <footer className="w-full dark:bg-black border-t border-border text-foreground py-10 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Column 1 - Branding */}
         <div>
           <h2 className="text-xl font-bold mb-2 text-primary">Amaanah</h2>
@@ -34,36 +34,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column 2 - Quick Links */}
-        <div>
-          <h3 className="text-sm font-semibold mb-3 text-foreground">
-            Quick Links
-          </h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="#features" className="hover:text-primary">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#pricing" className="hover:text-primary">
-                Pricing
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-primary">
-                Book A Demo
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="hover:text-primary">
-                Get In Touch
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 3 - Contact Info */}
+        {/* Column 2 - Contact Info */}
         <div>
           <h3 className="text-sm font-semibold mb-3 text-foreground">
             Contact
@@ -83,6 +54,63 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+
+        {/* Column 2 - Quick Links */}
+        <div>
+          <h3 className="text-sm font-semibold mb-3 text-foreground">
+            Quick Links
+          </h3>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>
+              <Link href="#features" className="hover:text-primary">
+                Features
+              </Link>
+            </li>
+            <li>
+              <Link href="#about" className="hover:text-primary">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="#pricing" className="hover:text-primary">
+                Pricing
+              </Link>
+            </li>
+
+            <li>
+              <Link href="#contact" className="hover:text-primary">
+                Get In Touch
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 2 - Quick Links */}
+        <div>
+          <h3 className="text-sm font-semibold mb-3 text-foreground">Legals</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>
+              <Link href="#" className="hover:text-primary">
+                Anti- Slavery Statement
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy-policy" className="hover:text-primary">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-primary">
+                Software License Terms of Use
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms-and-conditions" className="hover:text-primary">
+                Terms and Conditions
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="text-muted-foreground text-xs mt-16 px-4 text-center">
         <div>
@@ -99,7 +127,10 @@ export default function Footer() {
               Privacy Policy
             </Link>{" "}
             here. You can also view our{" "}
-            <Link href="/terms-and-conditions" className="text-primary underline">
+            <Link
+              href="/terms-and-conditions"
+              className="text-primary underline"
+            >
               Terms and Conditions
             </Link>{" "}
             here.

@@ -74,8 +74,8 @@ const features = [
         desc: "Update your menu in real-time across outlets.",
       },
       {
-        name: "Combo Offers, Special Menu, Drinks",
-        desc: "Create promotions that sell more.",
+        name: "Dish of the day, buffet, banquet night and set meals",
+        desc: "Easily create and update your special promotions.",
       },
     ],
   },
@@ -92,7 +92,7 @@ export default function Features() {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Beyond the basics – discover the innovations that make Amaanah
-              EPOS stand out in the restaurant industry.
+              stand out and dish out results in the hospitality industry.
             </p>
           </div>
 
@@ -144,8 +144,9 @@ export default function Features() {
             Core Features
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to streamline your restaurant operation and
-            scale with confidence.
+            Everything you need to streamline the operation of your takeaway,
+            cafe, restaurant or any other hospitality business and scale with
+            confidence.
           </p>
         </div>
 

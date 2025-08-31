@@ -26,7 +26,7 @@ export default function Pricing() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {/* Starter Plan */}
           <motion.div
             className="border dark:custom-gradient rounded-2xl shadow-lg p-8 flex flex-col justify-between"
@@ -121,8 +121,10 @@ export default function Pricing() {
 
             <div>
               <h3 className="text-2xl font-semibold mb-4">Bespoke</h3>
-              <p className="text-3xl font-bold mb-2">Custom Pricing</p>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-3xl font-bold mb-2">
+                Custom Combination of Features
+              </p>
+              {/* <p className="text-muted-foreground mb-6">
                 Tailored solutions for your unique business needs. Perfect for
                 large enterprises, franchises, or anyone needing something
                 extra.
@@ -133,11 +135,11 @@ export default function Pricing() {
                 <li>✔ Custom API & Integrations</li>
                 <li>✔ Enterprise-Level Security</li>
                 <li>✔ Flexible Billing Options</li>
-              </ul>
+              </ul> */}
             </div>
 
             <Button variant="secondary" className="mt-6 w-full">
-              Get Your Quote
+              Get Quote
             </Button>
           </motion.div>
         </div>

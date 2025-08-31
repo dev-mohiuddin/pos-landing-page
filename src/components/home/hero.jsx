@@ -1,87 +1,3 @@
-// "use client";
-
-// import { Button } from "@/components/ui/button";
-// import { motion, AnimatePresence } from "framer-motion";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useEffect, useState } from "react";
-// import { ammanah1, ammanah2, ammanah3 } from "@/assets";
-
-// const images = [ammanah1, ammanah2, ammanah3];
-
-// export default function Hero() {
-//   const [current, setCurrent] = useState(0);
-
-//   // Auto slide every 4s
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setCurrent((prev) => (prev + 1) % images.length);
-//     }, 4000);
-//     return () => clearInterval(timer);
-//   }, []);
-
-//   return (
-//     <section
-//       id="home"
-//       className="w-full py-16 md:py-24 bg-background text-foreground"
-//     >
-//       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
-//         {/* Left Side - Text */}
-//         <motion.div
-//           className="w-full md:w-1/2"
-//           initial={{ opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.6 }}
-//         >
-//           <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
-//             Manage Your Entire Restaurant –{" "}
-//             <span className="text-primary">Smarter, Faster, Simpler.</span>
-//           </h1>
-//           <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-//             All-in-one restaurant management software for seamless operations,
-//             real-time insights, and better customer service.
-//           </p>
-
-//           <div className="flex flex-wrap gap-4">
-//             <Button asChild size="lg">
-//               <Link href="#demo">Get Started</Link>
-//             </Button>
-//             <Button asChild size="lg" variant="outline">
-//               <Link href="#features">Explore Features</Link>
-//             </Button>
-//           </div>
-//         </motion.div>
-
-//         {/* Right Side - Image Slider */}
-//         <motion.div
-//           className="w-full md:w-1/2 relative h-[300px] sm:h-[400px]"
-//           initial={{ opacity: 0, scale: 0.95 }}
-//           animate={{ opacity: 1, scale: 1 }}
-//           transition={{ duration: 0.7 }}
-//         >
-//           <AnimatePresence mode="wait">
-//             <motion.div
-//               key={images[current]}
-//               initial={{ opacity: 0, x: 50 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               exit={{ opacity: 0, x: -50 }}
-//               transition={{ duration: 0.6 }}
-//               className="absolute inset-0"
-//             >
-//               <Image
-//                 src={images[current]}
-//                 alt={`Slide ${current + 1}`}
-//                 width={600}
-//                 height={400}
-//                 className="object-contain rounded-xl shadow-lg border"
-//               />
-//             </motion.div>
-//           </AnimatePresence>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
 
 "use client";
 
@@ -124,10 +40,10 @@ export default function Hero() {
         >
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 tracking-tight">
             You asked for it. We coded it –{" "}
-            <span className="text-primary">Amaanah EPOS Solutions.</span>
+            <span className="">Amaanah EPOS Solutions.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8">
-            Restaurant management problems? Amaanah EPOS is the solution to all
+            Restaurant management problems? Amaanah EPOS is the solutions to all
             your oddly specific nightmares.
           </p>
 
