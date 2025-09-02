@@ -1,8 +1,9 @@
 "use client";
-
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import DemoDialog from "../common/demo-dialog";
 import {
   LucideUtensils,
   LucideUsers,
@@ -82,6 +83,8 @@ const features = [
 ];
 
 export default function Features() {
+
+  const [isOpenDemo, setIsOpenDemo] = useState(false)
   return (
     <section id="features" className="w-full bg-muted/10 dark:bg-muted/5">
       <div id="unique-features" className="w-full py-20 bg-background">
@@ -182,9 +185,10 @@ export default function Features() {
         </div>
 
         <div className="text-center mt-12">
-          <Button asChild size="lg">
-            <a href="#demo">Book a Demo</a>
+          <Button onClick={()=>setIsOpenDemo(true)} size="lg">
+           Book a Demo
           </Button>
+          <DemoDialog open={isOpenDemo} onOpenChange={setIsOpenDemo} />
         </div>
       </div>
     </section>

@@ -105,7 +105,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/terms-and-conditions" className="hover:text-primary">
+              <Link href="/privacy-policy" className="hover:text-primary">
                 Terms and Conditions
               </Link>
             </li>
@@ -127,10 +127,7 @@ export default function Footer() {
               Privacy Policy
             </Link>{" "}
             here. You can also view our{" "}
-            <Link
-              href="/terms-and-conditions"
-              className="text-primary underline"
-            >
+            <Link href="/privacy-policy" className="text-primary underline">
               Terms and Conditions
             </Link>{" "}
             here.

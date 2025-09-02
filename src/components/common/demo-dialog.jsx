@@ -15,8 +15,8 @@ import { Button } from "@/components/ui/button";
 
 export default function DemoDialog({ open, onOpenChange }) {
   return (
-    <Dialog className='w-[1000px]' open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[500px] p-8">
+    <Dialog className='!w-[1000px]' open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="!w-[1000px] p-8">
         {/* <DialogHeader>
           <DialogTitle className="text-2xl font-semibold">
             Book a Demo
@@ -32,7 +32,7 @@ export default function DemoDialog({ open, onOpenChange }) {
             <Label className="text-sm font-medium">
               What type of business are you running?
             </Label>
-            <Label className="text-sm font-medium mt-8">Size</Label>
+            <Label className="text-sm font-medium mt-5">Size</Label>
             <RadioGroup defaultValue="small" className="flex gap-6">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="small" id="small" />
@@ -69,7 +69,7 @@ export default function DemoDialog({ open, onOpenChange }) {
           </div>
 
           {/* Form */}
-          <div className="space-y-6">
+          <div className="space-y-6 mt-9">
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name *</Label>
