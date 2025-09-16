@@ -68,7 +68,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="#about" className="hover:text-primary">
-                About
+                Why Choose Us
               </Link>
             </li>
             <li>
@@ -79,7 +79,7 @@ export default function Footer() {
 
             <li>
               <Link href="#contact" className="hover:text-primary">
-                Get In Touch
+                Book A Demo
               </Link>
             </li>
           </ul>

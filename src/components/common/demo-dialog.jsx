@@ -13,9 +13,9 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 
-export default function DemoDialog({ open, onOpenChange }) {
+export default function DemoDialog({ getQuote, open, onOpenChange }) {
   return (
-    <Dialog className='' open={open} onOpenChange={onOpenChange}>
+    <Dialog className="" open={open} onOpenChange={onOpenChange}>
       <DialogContent className="!w-[800px] !max-w-5xl p-8">
         {/* <DialogHeader>
           <DialogTitle className="text-2xl font-semibold">
@@ -32,6 +32,7 @@ export default function DemoDialog({ open, onOpenChange }) {
             <Label className="text-sm font-medium">
               What type of business are you running?
             </Label>
+            <DialogTitle></DialogTitle>
             <Label className="text-sm font-medium mt-8">Size</Label>
             <RadioGroup defaultValue="small" className="flex gap-6">
               <div className="flex items-center space-x-2">
@@ -117,11 +118,11 @@ export default function DemoDialog({ open, onOpenChange }) {
                 htmlFor="preferredDays"
                 className="block text-sm font-medium mb-1"
               >
-                Preferred days and times in a week
+                Any Special Notes
               </label>
               <Textarea
                 id="preferredDays"
-                placeholder="E.g., Monday & Wednesday, afternoons"
+                placeholder="e.g., I have two outlets... "
                 className="w-full h-24"
               />
             </div>
@@ -131,7 +132,7 @@ export default function DemoDialog({ open, onOpenChange }) {
                 htmlFor="nextAvailable"
                 className="block text-sm font-medium mb-1"
               >
-                Next available day
+                {getQuote ? "Best time to call" : "Date and Time"}
               </label>
               <Input id="nextAvailable" type="date" className="w-full" />
             </div>

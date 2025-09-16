@@ -52,31 +52,32 @@ export default function Contact() {
               className="w-full"
             />
           </div>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">
+                Email Address *
+              </label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+                className="w-full"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email Address *
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              required
-              className="w-full"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium mb-1">
-              Phone Number *
-            </label>
-            <Input
-              id="phone"
-              type="tel"
-              placeholder="+880-123-456789"
-              required
-              className="w-full"
-            />
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium mb-1">
+                Phone Number *
+              </label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="+880-123-456789"
+                required
+                className="w-full"
+              />
+            </div>
           </div>
 
           <div>
@@ -109,8 +110,6 @@ export default function Contact() {
               className="w-full"
             />
           </div>
-
-   
 
           <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">
             Submit

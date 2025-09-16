@@ -3,8 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import DemoDialog from "../common/demo-dialog";
+import { useState } from "react";
 
 export default function Pricing() {
+  const [dialog, setDialog] = useState(false);
   return (
     <section
       id="pricing"
@@ -79,7 +82,7 @@ export default function Pricing() {
                 <li>✔ Cost & Stock Management</li>
               </ul>
             </div>
-            <Button className="mt-6 w-full">Choose Premium</Button>
+            <Button className="mt-6 w-full">Get Started</Button>
           </motion.div>
 
           {/* Premium Plan */}
@@ -105,9 +108,7 @@ export default function Pricing() {
                 <li>✔ Custom API Integration</li>
               </ul>
             </div>
-            <Button variant="outline" className="mt-6 w-full">
-              Contact Sales
-            </Button>
+            <Button className="mt-6 w-full">Get Started</Button>
           </motion.div>
 
           {/* Bespoke Plan */}
@@ -138,10 +139,15 @@ export default function Pricing() {
               </ul> */}
             </div>
 
-            <Button variant="secondary" className="mt-6 w-full">
+            <Button
+              onClick={() => setDialog(true)}
+              variant="secondary"
+              className="mt-6 w-full cursor-pointer"
+            >
               Get Quote
             </Button>
           </motion.div>
+          <DemoDialog getQuote={true} open={dialog} onOpenChange={setDialog} />
         </div>
       </div>
     </section>

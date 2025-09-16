@@ -9,6 +9,8 @@ import {
   LucideClipboardList,
   LucidePieChart,
 } from "lucide-react";
+import { useState } from "react";
+import DemoDialog from "../common/demo-dialog";
 
 const features = [
   {
@@ -82,6 +84,7 @@ const features = [
 ];
 
 export default function Features() {
+  const [dialog, setDialog] = useState(false);
   return (
     <section id="features" className="w-full bg-muted/10 dark:bg-muted/5">
       <div id="unique-features" className="w-full py-20 bg-background">
@@ -145,7 +148,7 @@ export default function Features() {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Everything you need to streamline the operation of your takeaway,
-            cafe, restaurant or any other hospitality business and scale with
+            cafe, restaurant or any other hospitality business, and scale with
             confidence.
           </p>
         </div>
@@ -181,10 +184,20 @@ export default function Features() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button asChild size="lg">
-            <a href="#demo">Book a Demo</a>
+        <div className="text-center mt-12 flex flex-col gap-4 justify-center items-center">
+          <Button
+            onClick={() => setDialog(true)}
+            className={"w-32 cursor-pointer"}
+            asChild
+            size="lg"
+          >
+            <span>Book a Demo</span>
           </Button>
+          {/* <span className="text-sm text-muted-foreground max-w-md">
+            All set to try out our EPOS and make it yours? First tell us
+            about your business
+          </span> */}
+          <DemoDialog open={dialog} onOpenChange={setDialog} />
         </div>
       </div>
     </section>

@@ -39,11 +39,11 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 tracking-tight">
-            You asked for it. We coded it –{" "}
-            <span className="">Amaanah EPOS Solutions.</span>
+            You asked for it. We coded it.{" "}
+            <span className="text-primary" >Amaanah EPOS Solutions</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8">
-            Restaurant management problems? Amaanah EPOS is the solutions to all
+            Restaurant management problems?<span className="text-primary font-bold"> Amaanah</span> is the solution to all
             your oddly specific nightmares.
           </p>
 
