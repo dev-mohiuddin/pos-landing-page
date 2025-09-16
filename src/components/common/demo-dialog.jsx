@@ -15,8 +15,8 @@ import { Button } from "@/components/ui/button";
 
 export default function DemoDialog({ open, onOpenChange }) {
   return (
-    <Dialog className='w-[1000px]' open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[500px] p-8">
+    <Dialog className='' open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="!w-[800px] !max-w-5xl p-8">
         {/* <DialogHeader>
           <DialogTitle className="text-2xl font-semibold">
             Book a Demo
