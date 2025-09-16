@@ -54,7 +54,7 @@ export default function Preview() {
 
           <Button asChild size="lg" className="mb-12">
             <a
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"

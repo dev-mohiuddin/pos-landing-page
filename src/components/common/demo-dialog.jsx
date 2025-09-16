@@ -70,7 +70,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
           </div>
 
           {/* Form */}
-          <div className="space-y-6">
+          <div className="space-y-6 mt-9">
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name *</Label>
