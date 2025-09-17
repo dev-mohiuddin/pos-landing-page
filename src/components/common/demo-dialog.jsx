@@ -129,15 +129,19 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
 
             <div>
               <label
-                htmlFor="nextAvailable"
+                htmlFor="datetime"
                 className="block text-sm font-medium mb-1"
               >
                 {getQuote ? "Best time to call" : "Date and Time"}
               </label>
-              <Input id="nextAvailable" type="date" className="w-full" />
+              <Input
+                name={"datetime"}
+                id="datetime"
+                type="datetime-local"
+                className="bg-white"
+              />
             </div>
           </div>
-
           <Button className="w-full text-base py-6">Submit</Button>
         </div>
       </DialogContent>

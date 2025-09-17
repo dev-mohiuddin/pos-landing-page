@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold">Why Choose Us</h2>
+          <h2 className="text-3xl font-bold">Get in Touch</h2>
           <p className="text-muted-foreground text-sm md:text-base">
             We'd love to hear from you. Whether you're curious about features, a
             free trial, or even press—we're ready to answer any questions.
@@ -52,6 +52,17 @@ export default function Contact() {
               className="w-full"
             />
           </div>
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium mb-1">
+              Company / Trading Name *
+            </label>
+            <Input
+              id="company"
+              placeholder="XYZ Ltd TA XYZ"
+              required
+              className="w-full"
+            />
+          </div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-1">
@@ -73,7 +84,7 @@ export default function Contact() {
               <Input
                 id="phone"
                 type="tel"
-                placeholder="+880-123-456789"
+                placeholder="+44 number as example"
                 required
                 className="w-full"
               />
@@ -106,9 +117,36 @@ export default function Contact() {
             <Input
               id="address2"
               type="text"
-              placeholder="City, State, Zip Code"
+              placeholder=""
               className="w-full"
             />
+          </div>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-1">
+                City *
+              </label>
+              <Input
+                id="city"
+                type="text"
+                placeholder="Enter City"
+                required
+                className="w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="postcode" className="block text-sm font-medium mb-1">
+                Postcode *
+              </label>
+              <Input
+                id="postcode"
+                type="text"
+                placeholder="AB1 2CD"
+                required
+                className="w-full"
+              />
+            </div>
           </div>
 
           <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">

@@ -38,7 +38,7 @@ const benefits = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why" className="w-full py-10 bg-background text-foreground">
+    <section id="why" className="w-full py-24 bg-background text-foreground">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">

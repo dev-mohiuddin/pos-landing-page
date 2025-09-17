@@ -91,7 +91,10 @@ export default function Preview() {
       <div className="container px-4 mx-auto mt-20">
         <div className="flex justify-center items-center mb-6">
           <span className="text-center max-w-xl text-muted-foreground text-xl font-bold ">
-            <span className="text-2xl text-white">All set to try out our EPOS and make it yours?</span>{" "} <br />
+            <span className="text-2xl text-white">
+              All set to try out our EPOS and make it yours?
+            </span>{" "}
+            <br />
             <span className="text-primary">
               First tell us about your business:
             </span>
@@ -188,7 +191,7 @@ export default function Preview() {
                 htmlFor="preferredDays"
                 className="block text-sm font-medium mb-1"
               >
-              Any Special Notes
+                Any Special Notes
               </label>
               <Textarea
                 id="preferredDays"
@@ -204,7 +207,12 @@ export default function Preview() {
               >
                 Date and Time
               </label>
-              <Input id="nextAvailable" type="date" className="w-full" />
+              <Input
+                name={"datetime"}
+                id="datetime"
+                type="datetime-local"
+                className="bg-white"
+              />
             </div>
           </div>
           <div className="flex justify-start">
