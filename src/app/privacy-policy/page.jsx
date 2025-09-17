@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function PrivacyPolicy() {
   return (
-    <section className="max-w-4xl mx-auto p-8">
+    <section className="max-w-4xl mx-auto px-8 pt-2">
       <div className="mb-5">
         <Image src={tac} alt="TAC" />
       </div>

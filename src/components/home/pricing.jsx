@@ -43,14 +43,31 @@ export default function Pricing() {
                 {" "}
                 £59.99<span className="text-sm font-medium">/outlet/mo</span>
               </p>
-              <p className="text-muted-foreground mb-6">
-                Perfect for small restaurants & cafes.
-              </p>
+              <div>
+                <p className=" ">Features</p>
+                <p className="text-muted-foreground text-sm mb-6">
+                  Standard Features Includes:
+                </p>
+              </div>
               <ul className="text-left space-y-2 text-sm">
-                <li>✔ Basic Order Management</li>
-                <li>✔ Menu Management</li>
-                <li>✔ Limited Staff Access</li>
-                <li>✔ Basic Reports</li>
+                <li>✔ Payment integrations</li>
+                <li>✔ Unlimited 24/7 support</li>
+                <li>✔ DashBoard</li>
+                <li>✔ Advanced location reporting</li>
+                <li>✔ Location grouping</li>
+                <li>✔ Multi-location menu control</li>
+                <li>✔ Multi-location reporting suite</li>
+                <li>✔ Online ordering</li>
+                <li>✔ Inventory management</li>
+                <li>✔ Real-time reporting</li>
+                <li>✔ Mixers & modifiers</li>
+                <li>✔ Cash control</li>
+                <li>✔ Allergens & nutritional info</li>
+                <li>✔ Reports & insights</li>
+                <li>✔ Staff scheduling</li>
+                <li>✔ Product & menu setup</li>
+                <li>✔ On-site installation</li>
+                <li>✔ Training</li>
               </ul>
             </div>
             <Button className="mt-6 w-full">Get Started</Button>
@@ -58,7 +75,7 @@ export default function Pricing() {
 
           {/* Standard Plan - Most Popular */}
           <motion.div
-            className="border-2 dark:custom-gradient  border-primary bg-background shadow-2xl p-8 rounded-2xl scale-[1.03] relative z-10"
+            className="border-2 dark:custom-gradient flex flex-col justify-between  border-primary bg-background shadow-2xl p-8 rounded-2xl scale-[1.03] relative z-10"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -71,15 +88,19 @@ export default function Pricing() {
               <p className="text-3xl font-bold mb-2">
                 £79.99<span className="text-sm font-medium">/outlet/mo</span>
               </p>
-              <p className="text-muted-foreground mb-6">
-                Ideal for growing restaurants with multiple outlets.
-              </p>
+              <div>
+                <p className=" ">Features</p>
+                <p className="text-muted-foreground text-sm mb-6">
+                  Everything in Standard, plus:
+                </p>
+              </div>
               <ul className="text-left space-y-2 text-sm">
-                <li>✔ Everything in Starter</li>
-                <li>✔ Staff Scheduling & Payroll</li>
-                <li>✔ Advanced Reports & Analytics</li>
-                <li>✔ Loyalty Programs & Vouchers</li>
-                <li>✔ Cost & Stock Management</li>
+                <li>✔ Table management</li>
+                <li>✔ Online table reservation</li>
+                <li>✔ Customer loyality management</li>
+                <li>✔ Gift Vouchers</li>
+                <li>✔ Live Map</li>
+                <li>✔ Bespoke table plans</li>
               </ul>
             </div>
             <Button className="mt-6 w-full">Get Started</Button>
@@ -97,15 +118,20 @@ export default function Pricing() {
               <p className="text-3xl font-bold mb-2">
                 £99.99<span className="text-sm font-medium">/outlet/mo</span>
               </p>
-              <p className="text-muted-foreground mb-6">
-                For franchises and enterprise restaurant chains.
-              </p>
+              <div>
+                <p className=" ">Features</p>
+                <p className="text-muted-foreground text-sm mb-6">
+                  Everything in Premium, plus:
+                </p>
+              </div>
               <ul className="text-left space-y-2 text-sm">
-                <li>✔ All Standard Features</li>
-                <li>✔ Dedicated Account Manager</li>
-                <li>✔ White-label Branding</li>
-                <li>✔ Multi-Outlet Dashboard</li>
-                <li>✔ Custom API Integration</li>
+                <li>✔ Location wise Staff scheduling</li>
+                <li>✔ Pre-Order Facility</li>
+                <li>✔ Kitchen Display Sytem (KDS)</li>
+                <li>✔ Kitchen management</li>
+                <li>✔ Booking & deposit handling</li>
+                <li>✔ Driver Management</li>
+                <li>✔ Multi- site dashboard</li>
               </ul>
             </div>
             <Button className="mt-6 w-full">Get Started</Button>
