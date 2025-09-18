@@ -5,7 +5,7 @@ import { Separator } from "../ui/separator";
 
 function AntiSlaveryTabs() {
   return (
-    <TabsContent value="anti-slavery">
+    <TabsContent value="anti-slavery-statement">
       <Card className="shadow-lg max-w-4xl mx-auto bg-transparent border-0">
         <CardHeader>
           <CardTitle className="text-3xl font-bold ">

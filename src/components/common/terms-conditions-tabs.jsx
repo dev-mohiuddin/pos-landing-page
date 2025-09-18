@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { TabsContent } from "../ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
@@ -7,7 +5,7 @@ import { Separator } from "../ui/separator";
 
 function TermsTabs() {
   return (
-    <TabsContent value="tac">
+    <TabsContent value="terms-and-conditions">
       <Card className="shadow-lg max-w-4xl mx-auto bg-transparent border-0">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">
@@ -104,7 +102,9 @@ function TermsTabs() {
 
           <Separator />
 
-          <h3 className="font-semibold text-xl">Rights to Intellectual Property</h3>
+          <h3 className="font-semibold text-xl">
+            Rights to Intellectual Property
+          </h3>
           <p>
             The contents of this site are copyrighted as our Intellectual
             Property, and you may not duplicate these materials for public or

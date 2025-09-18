@@ -90,23 +90,47 @@ export default function Footer() {
           <h3 className="text-sm font-semibold mb-3 text-foreground">Legals</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link href="/privacy-policy" className="hover:text-primary">
-                Anti- Slavery Statement
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy-policy" className="hover:text-primary">
+              <Link
+                href={{
+                  pathname: "/legal",
+                  query: { tabs: "Privacy-Policy" },
+                }}
+                className="hover:text-primary"
+              >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/privacy-policy" className="hover:text-primary">
-                Software License Terms of Use
+              <Link
+                href={{
+                  pathname: "/legal",
+                  query: { tabs: "terms-and-conditions" },
+                }}
+                className="hover:text-primary"
+              >
+                Terms and Conditions
               </Link>
             </li>
             <li>
-              <Link href="/privacy-policy" className="hover:text-primary">
-                Terms and Conditions
+              <Link
+                href={{
+                  pathname: "/legal",
+                  query: { tabs: "anti-slavery-statement" },
+                }}
+                className="hover:text-primary"
+              >
+                Anti- Slavery Statement
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={{
+                  pathname: "/legal",
+                  query: { tabs: "license-terms" },
+                }}
+                className="hover:text-primary"
+              >
+                Software License Terms of Use
               </Link>
             </li>
           </ul>
@@ -123,14 +147,26 @@ export default function Footer() {
           <p className="mt-2">
             By continuing to use our website you consent to us storing cookies.
             For further information, see our{" "}
-            <Link href="/privacy-policy" className="text-primary underline">
+            <Link
+              href={{
+                pathname: "/legal",
+                query: { tabs: "Privacy-Policy" },
+              }}
+              className="text-primary underline"
+            >
               Privacy Policy
-            </Link>{" "}
-            here. You can also view our{" "}
-            <Link href="/privacy-policy" className="text-primary underline">
+            </Link>
+            &nbsp; here. You can also view our{" "}
+            <Link
+              href={{
+                pathname: "/legal",
+                query: { tabs: "terms-and-conditions" },
+              }}
+              className="text-primary underline"
+            >
               Terms and Conditions
-            </Link>{" "}
-            here.
+            </Link>
+            &nbsp;here.
           </p>
         </div>
         <div className="text-center mt-5 text-xs text-muted-foreground">
