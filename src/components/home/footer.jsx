@@ -90,7 +90,7 @@ export default function Footer() {
           <h3 className="text-sm font-semibold mb-3 text-foreground">Legals</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link href="#" className="hover:text-primary">
+              <Link href="/privacy-policy" className="hover:text-primary">
                 Anti- Slavery Statement
               </Link>
             </li>
@@ -100,7 +100,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-primary">
+              <Link href="/privacy-policy" className="hover:text-primary">
                 Software License Terms of Use
               </Link>
             </li>
