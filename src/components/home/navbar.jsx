@@ -92,7 +92,6 @@ function Navbar() {
           <div className="flex items-center gap-2">
             <ModeToggle />
             <Button onClick={() => setIsOpenDemo(true)}>Book a Demo</Button>
-            <DemoDialog open={isOpenDemo} onOpenChange={setIsOpenDemo} />
           </div>
         </div>
 
@@ -107,7 +106,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-black shadow-md px-4 py-4">
+        <div className="md:hidden bg-white dark:bg-black flex w-full items-center flex-col justify-center shadow-md px-4 py-4">
           <ul className="flex flex-col space-y-3 text-sm text-muted-foreground">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
@@ -123,14 +122,15 @@ function Navbar() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Button asChild className="w-full mt-3">
-                <Link href="/#demo">Book a Demo</Link>
-              </Button>
+            <li className="w-full flex">
             </li>
           </ul>
+              <Button className={'w-full'} onClick={() => setIsOpenDemo(true)}>Book a Demo</Button>
+
         </div>
       )}
+
+      <DemoDialog open={isOpenDemo} onOpenChange={setIsOpenDemo} />
     </nav>
   );
 }

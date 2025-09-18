@@ -11,7 +11,8 @@ export default function PrivacyPolicy() {
   return (
     <section className="max-w-4xl mx-auto px-8 pt-2">
       <div className="mb-5">
-        <Image src={tac} alt="TAC" />
+        {/* <Image src={tac} alt="TAC" /> */}
+        <h2 className="text-accent-foreground font-black text-5xl p-4">Legal</h2>
       </div>
       <Tabs defaultValue="Privacy-Policy" className="">
         <TabsList className={`flex items-center gap-3`}>
