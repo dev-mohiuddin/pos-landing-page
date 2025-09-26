@@ -18,7 +18,7 @@ export default function Footer() {
         <div>
           <h2 className="text-xl font-bold mb-2 text-primary">Amaanah</h2>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Restaurant management problems? Amaanah EPOS is the solution to all
+            Restaurant management problems? Amaanah is the solution to all
             your oddly specific nightmares.
           </p>
           <div className="flex gap-4 mt-4 text-muted-foreground">
@@ -139,7 +139,7 @@ export default function Footer() {
       <div className="text-muted-foreground text-xs mt-16 px-4 text-center">
         <div>
           <p>
-            Amaanah EPOS Solutions is one of the trading names of Ar-Razzaakh
+            Amaanah Solutions is one of the trading names of Ar-Razzaakh
             LTD; Registered in England and Wales under company number 16272939.
             Registered office address: 48-50 St. Augustines Street, Norwich,
             United Kingdom, NR3 3AD.
