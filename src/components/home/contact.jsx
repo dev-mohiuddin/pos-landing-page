@@ -47,7 +47,7 @@ export default function Contact() {
             </label>
             <Input
               id="fullName"
-              placeholder="Enter your full name"
+              placeholder="Enter Full Name"
               required
               className="w-full"
             />
@@ -84,13 +84,12 @@ export default function Contact() {
               <Input
                 id="phone"
                 type="tel"
-                placeholder="+44 number as example"
+                placeholder="+447XXX XXX XXX"
                 required
                 className="w-full"
               />
             </div>
           </div>
-
           <div>
             <label
               htmlFor="address1"
@@ -101,12 +100,11 @@ export default function Contact() {
             <Input
               id="address1"
               type="text"
-              placeholder="House/Road no."
+              placeholder="House No., Street Name"
               required
               className="w-full"
             />
           </div>
-
           <div>
             <label
               htmlFor="address2"
@@ -117,7 +115,7 @@ export default function Contact() {
             <Input
               id="address2"
               type="text"
-              placeholder=""
+              placeholder="Additional Details"
               className="w-full"
             />
           </div>
@@ -136,7 +134,10 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="postcode" className="block text-sm font-medium mb-1">
+              <label
+                htmlFor="postcode"
+                className="block text-sm font-medium mb-1"
+              >
                 Postcode *
               </label>
               <Input
@@ -148,10 +149,12 @@ export default function Contact() {
               />
             </div>
           </div>
-
-          <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">
-            Submit
-          </Button>
+          <div className="flex flex-col">
+            <span className="text-sm"> * Required information</span>
+            <Button type="submit" size="lg" className="mt-2 w-full md:w-auto">
+              Submit
+            </Button>
+          </div>
         </form>
       </div>
     </section>

@@ -18,8 +18,8 @@ export default function Footer() {
         <div>
           <h2 className="text-xl font-bold mb-2 text-primary">Amaanah</h2>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Restaurant management problems? Amaanah is the solution to all
-            your oddly specific nightmares.
+            Restaurant management problems? Amaanah is the solution to all your
+            oddly specific nightmares.
           </p>
           <div className="flex gap-4 mt-4 text-muted-foreground">
             <Link href="#" aria-label="Facebook">
@@ -78,7 +78,7 @@ export default function Footer() {
             </li>
 
             <li>
-              <Link href="#contact" className="hover:text-primary">
+              <Link href="#book-demo" className="hover:text-primary">
                 Book A Demo
               </Link>
             </li>
@@ -139,10 +139,10 @@ export default function Footer() {
       <div className="text-muted-foreground text-xs mt-16 px-4 text-center">
         <div>
           <p>
-            Amaanah Solutions is one of the trading names of Ar-Razzaakh
-            LTD; Registered in England and Wales under company number 16272939.
-            Registered office address: 48-50 St. Augustines Street, Norwich,
-            United Kingdom, NR3 3AD.
+            Amaanah is one of the trading names of Ar-Razzaakh LTD; Registered
+            in England and Wales under company number 16272939. Registered
+            office address: 48-50 St. Augustines Street, Norwich, United
+            Kingdom, NR3 3AD.
           </p>
           <p className="mt-2">
             By continuing to use our website you consent to us storing cookies.

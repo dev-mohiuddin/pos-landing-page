@@ -74,7 +74,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" placeholder="Your full name" required />
+                <Input id="fullName" placeholder="Enter Full Name" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address *</Label>
@@ -90,7 +90,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+880-123-456789"
+                  placeholder="+447XXX XXX XXX"
                   required
                 />
               </div>
@@ -107,7 +107,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
               </label>
               <Input
                 id="company"
-                placeholder="Your company or trading name"
+                placeholder="XYZ Ltd TA XYZ"
                 required
                 className="w-full"
               />

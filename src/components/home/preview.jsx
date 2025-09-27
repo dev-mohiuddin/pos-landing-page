@@ -88,7 +88,7 @@ export default function Preview() {
           ))}
         </div>
       </div>
-      <div className="container px-4 mx-auto mt-20">
+      <div id="book-demo" className="container px-4 mx-auto pt-20">
         <div className="flex justify-center items-center mb-6">
           <span className="text-center max-w-xl text-muted-foreground text-xl font-bold ">
             <span className="text-2xl text-white">
@@ -147,7 +147,7 @@ export default function Preview() {
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" placeholder="Your full name" required />
+                <Input id="fullName" placeholder="Enter Full Name" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address *</Label>
@@ -163,7 +163,7 @@ export default function Preview() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+880-123-456789"
+                  placeholder="+447XXX XXX XXX"
                   required
                 />
               </div>
@@ -180,7 +180,7 @@ export default function Preview() {
               </label>
               <Input
                 id="company"
-                placeholder="Your company or trading name"
+                placeholder="XYZ Ltd TA XYZ"
                 required
                 className="w-full"
               />
