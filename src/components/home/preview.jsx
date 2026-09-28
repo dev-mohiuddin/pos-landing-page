@@ -4,57 +4,90 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
-import { PlayCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { PlayCircle, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ammanah1, ammanah2, ammanah3 } from "@/assets";
 import { useState, useEffect } from "react";
 
 const screenshots = [
-  { src: ammanah1, alt: "Dashboard Overview" },
-  { src: ammanah2, alt: "Create System" },
-  { src: ammanah3, alt: "Staff Profile" },
+  {
+    src: ammanah1,
+    title: "Dashboard Overview",
+    desc: "Real-time analytics, revenue summary, active orders, and outlet monitoring in one unified hub.",
+  },
+  {
+    src: ammanah2,
+    title: "POS Order Management",
+    desc: "Lightning fast order punching, table assignment, pre-orders, and split payments.",
+  },
+  {
+    src: ammanah3,
+    title: "Staff & Operations Control",
+    desc: "Role-based staff permissions, shift logs, performance tracking, and clock-in/out records.",
+  },
 ];
 
 export default function Preview() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
 
-  const [sliderRef, instanceRef] = useKeenSlider({
-    initial: 0,
-    loop: true,
-    mode: "snap",
-    slides: {
-      perView: 1.15,
-      spacing: 16,
-    },
-    breakpoints: {
-      "(min-width: 640px)": {
-        slides: {
-          perView: 1.8,
-          spacing: 20,
-        },
+  // Auto-play timer
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const timer = setInterval(() => {
+      handleNext();
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [currentIndex, isAutoPlay]);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % screenshots.length);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + screenshots.length) % screenshots.length);
+  };
+
+  const handleSelect = (index) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.3 },
       },
-      "(min-width: 1024px)": {
-        slides: {
-          perView: 2.2,
-          spacing: 24,
-        },
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.25 },
       },
-    },
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
-    created() {
-      setLoaded(true);
-    },
-  });
+    }),
+  };
 
   return (
-    <section id="demo" className="w-full py-20 bg-background text-foreground relative">
+    <section id="demo" className="w-full py-20 bg-background text-foreground relative overflow-hidden">
       <div className="container px-4 mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,103 +95,119 @@ export default function Preview() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
             See It In Action
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Explore how our platform works in real-time. Watch a quick
-            walkthrough or browse dashboard previews below.
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-base md:text-lg">
+            Explore how our platform works in real-time. Watch a quick walkthrough or browse dashboard previews below.
           </p>
 
-          <Button asChild size="lg" className="mb-12">
+          <Button asChild size="lg" className="mb-12 cursor-pointer shadow-md">
             <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#book-demo"
               className="flex items-center gap-2"
             >
-              <PlayCircle className="w-5 h-5" /> Watch How It Works
+              <PlayCircle className="w-5 h-5" /> Book a Live Demo
             </a>
           </Button>
         </motion.div>
 
-        {/* Carousel Slider with Navigation Arrows */}
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-10">
-          {/* Left Arrow Button */}
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            onClick={(e) => {
-              e.stopPropagation();
-              instanceRef.current?.prev();
-            }}
-            className="absolute -left-2 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground backdrop-blur-md shadow-xl border border-border cursor-pointer transition-all"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </Button>
+        {/* Interactive Feature Slider Component */}
+        <div
+          className="max-w-5xl mx-auto"
+          onMouseEnter={() => setIsAutoPlay(false)}
+          onMouseLeave={() => setIsAutoPlay(true)}
+        >
+          {/* Main Slide Display with Controls */}
+          <div className="relative rounded-2xl md:rounded-3xl border-2 border-border/80 bg-neutral-950 shadow-2xl p-2 sm:p-4 overflow-hidden">
+            {/* Left Prev Arrow Button */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground text-foreground backdrop-blur-md shadow-2xl border border-border/80 flex items-center justify-center cursor-pointer transition-all hover:scale-110 active:scale-95"
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+            </button>
 
-          {/* Keen Slider Container */}
-          <div ref={sliderRef} className="keen-slider py-4">
-            {screenshots.map((shot, i) => (
-              <div
-                key={i}
-                className="keen-slider__slide bg-muted/10 dark:bg-muted/20 border border-border rounded-2xl shadow-lg overflow-hidden transition-all duration-300 select-none cursor-grab active:cursor-grabbing"
-              >
-                <div className="relative aspect-[16/10] w-full bg-neutral-900/10 dark:bg-neutral-900/50">
+            {/* Slide Area */}
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-900 flex items-center justify-center">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={1}
+                  onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = Math.abs(offset.x) * velocity.x;
+                    if (swipe < -100) {
+                      handleNext();
+                    } else if (swipe > 100) {
+                      handlePrev();
+                    }
+                  }}
+                  className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing select-none"
+                >
                   <Image
-                    src={shot.src}
-                    alt={shot.alt}
-                    width={800}
-                    height={500}
-                    className="object-cover w-full h-full"
-                    priority={i === 0}
+                    src={screenshots[currentIndex].src}
+                    alt={screenshots[currentIndex].title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1000px"
+                    className="object-contain w-full h-full"
+                    priority
                   />
-                </div>
-                <div className="p-4 text-center text-sm font-semibold text-foreground/90 border-t border-border/50 bg-background/80">
-                  {shot.alt}
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right Next Arrow Button */}
+            <button
+              onClick={handleNext}
+              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-background/80 hover:bg-primary hover:text-primary-foreground text-foreground backdrop-blur-md shadow-2xl border border-border/80 flex items-center justify-center cursor-pointer transition-all hover:scale-110 active:scale-95"
+              aria-label="Next Slide"
+            >
+              <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+            </button>
           </div>
 
-          {/* Right Arrow Button */}
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            onClick={(e) => {
-              e.stopPropagation();
-              instanceRef.current?.next();
-            }}
-            className="absolute -right-2 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-background/90 hover:bg-primary hover:text-primary-foreground backdrop-blur-md shadow-xl border border-border cursor-pointer transition-all"
-            aria-label="Next Slide"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </Button>
+          {/* Active Slide Info */}
+          <div className="mt-5 text-center px-4">
+            <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              {screenshots[currentIndex].title}
+            </h3>
+            <p className="text-muted-foreground text-sm max-w-xl mx-auto mt-1">
+              {screenshots[currentIndex].desc}
+            </p>
+          </div>
 
-          {/* Dot Pagination */}
-          {loaded && instanceRef.current && (
-            <div className="flex justify-center items-center gap-2.5 mt-6">
-              {screenshots.map((_, idx) => (
+          {/* Interactive Navigation Thumbnails & Dots */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
+            <div className="flex items-center gap-2">
+              {screenshots.map((shot, idx) => (
                 <button
                   key={idx}
-                  onClick={() => instanceRef.current?.moveToIdx(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentSlide === idx
-                      ? "w-8 bg-primary shadow-sm"
-                      : "w-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  onClick={() => handleSelect(idx)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer border ${
+                    currentIndex === idx
+                      ? "bg-primary text-primary-foreground border-primary shadow-md scale-105"
+                      : "bg-background/80 text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
                   }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
+                >
+                  <span className={`w-2 h-2 rounded-full ${currentIndex === idx ? "bg-white" : "bg-muted-foreground"}`} />
+                  <span>{shot.title}</span>
+                </button>
               ))}
             </div>
-          )}
+          </div>
         </div>
       </div>
 
-      <div id="book-demo" className="container px-4 mx-auto pt-20">
+      {/* Book Demo Section */}
+      <div id="book-demo" className="container px-4 mx-auto pt-24">
         <div className="flex justify-center items-center mb-6">
           <span className="text-center max-w-xl text-muted-foreground text-xl font-bold">
             <span className="text-2xl text-foreground">
@@ -179,16 +228,16 @@ export default function Preview() {
             <Label className="text-sm font-medium mt-4 block text-muted-foreground">Size</Label>
             <RadioGroup defaultValue="small" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="small" id="small" />
-                <Label htmlFor="small" className="cursor-pointer">Small</Label>
+                <RadioGroupItem value="small" id="demo-size-small" />
+                <Label htmlFor="demo-size-small" className="cursor-pointer">Small</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="medium" id="medium" />
-                <Label htmlFor="medium" className="cursor-pointer">Medium</Label>
+                <RadioGroupItem value="medium" id="demo-size-medium" />
+                <Label htmlFor="demo-size-medium" className="cursor-pointer">Medium</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="chain" id="chain" />
-                <Label htmlFor="chain" className="cursor-pointer">Chain</Label>
+                <RadioGroupItem value="chain" id="demo-size-chain" />
+                <Label htmlFor="demo-size-chain" className="cursor-pointer">Chain</Label>
               </div>
             </RadioGroup>
           </div>
@@ -198,16 +247,16 @@ export default function Preview() {
             <Label className="text-sm font-medium text-muted-foreground">Service</Label>
             <RadioGroup defaultValue="restaurant" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="restaurant" id="restaurant" />
-                <Label htmlFor="restaurant" className="cursor-pointer">Restaurant</Label>
+                <RadioGroupItem value="restaurant" id="demo-service-restaurant" />
+                <Label htmlFor="demo-service-restaurant" className="cursor-pointer">Restaurant</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="takeaway" id="takeaway" />
-                <Label htmlFor="takeaway" className="cursor-pointer">Takeaway</Label>
+                <RadioGroupItem value="takeaway" id="demo-service-takeaway" />
+                <Label htmlFor="demo-service-takeaway" className="cursor-pointer">Takeaway</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="both" id="both" />
-                <Label htmlFor="both" className="cursor-pointer">Both</Label>
+                <RadioGroupItem value="both" id="demo-service-both" />
+                <Label htmlFor="demo-service-both" className="cursor-pointer">Both</Label>
               </div>
             </RadioGroup>
           </div>
@@ -216,22 +265,22 @@ export default function Preview() {
           <div className="space-y-6 pt-2">
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" placeholder="Enter Full Name" required />
+                <Label htmlFor="demoFullName">Full Name *</Label>
+                <Input id="demoFullName" placeholder="Enter Full Name" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address *</Label>
+                <Label htmlFor="demoEmail">Email Address *</Label>
                 <Input
-                  id="email"
+                  id="demoEmail"
                   type="email"
                   placeholder="you@example.com"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number *</Label>
+                <Label htmlFor="demoPhone">Phone Number *</Label>
                 <Input
-                  id="phone"
+                  id="demoPhone"
                   type="tel"
                   placeholder="+447XXX XXX XXX"
                   required
@@ -243,13 +292,13 @@ export default function Preview() {
           <div className="space-y-4">
             <div>
               <label
-                htmlFor="company"
+                htmlFor="demoCompany"
                 className="block text-sm font-medium mb-1"
               >
                 Company / Trading Name *
               </label>
               <Input
-                id="company"
+                id="demoCompany"
                 placeholder="XYZ Ltd TA XYZ"
                 required
                 className="w-full"
@@ -258,13 +307,13 @@ export default function Preview() {
 
             <div>
               <label
-                htmlFor="preferredDays"
+                htmlFor="demoNotes"
                 className="block text-sm font-medium mb-1"
               >
                 Any Special Notes
               </label>
               <Textarea
-                id="preferredDays"
+                id="demoNotes"
                 placeholder="e.g., I have two outlets... "
                 className="w-full h-24"
               />
@@ -272,21 +321,21 @@ export default function Preview() {
 
             <div>
               <label
-                htmlFor="nextAvailable"
+                htmlFor="demoDatetime"
                 className="block text-sm font-medium mb-1"
               >
                 Date and Time
               </label>
               <Input
                 name={"datetime"}
-                id="datetime"
+                id="demoDatetime"
                 type="datetime-local"
                 className="bg-background"
               />
             </div>
           </div>
           <div className="flex justify-start">
-            <Button className="text-base px-8 py-5 cursor-pointer font-semibold shadow-md">Submit</Button>
+            <Button className="text-base px-8 py-5 cursor-pointer font-semibold shadow-md">Submit Request</Button>
           </div>
         </div>
       </div>
