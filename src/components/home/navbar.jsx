@@ -57,17 +57,19 @@ function Navbar () {
         <Link href={'/'}>
           <Image
             className='w-[136px] hidden dark:block'
-            src={whiteLogo.src}
+            src={whiteLogo || "/images/logo-white.png"}
             alt='Dark Logo'
             width={136}
-            height={100}
+            height={40}
+            priority
           />
           <Image
             className='w-[136px] block dark:hidden'
-            src={blackLogo.src}
+            src={blackLogo || "/images/logo-black.png"}
             alt='Light Logo'
             width={136}
-            height={100}
+            height={40}
+            priority
           />
         </Link>
 
