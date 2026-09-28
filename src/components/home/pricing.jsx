@@ -8,6 +8,91 @@ import { useState } from "react";
 
 export default function Pricing() {
   const [dialog, setDialog] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState("essential");
+
+  const handleOpenDialog = (pkgName) => {
+    setSelectedPackage(pkgName);
+    setDialog(true);
+  };
+
+  const packages = [
+    {
+      id: "essential",
+      name: "Essential",
+      price: "£39.99",
+      period: "/outlet/mo",
+      isPopular: false,
+      modules: [
+        "Call Log",
+        "Take Orders",
+        "Back office",
+        "Client Panel",
+        "Orders History",
+        "Dashboard",
+        "Reporting",
+      ],
+    },
+    {
+      id: "standard",
+      name: "Standard",
+      price: "£59.99",
+      period: "/outlet/mo",
+      isPopular: false,
+      modules: [
+        "Call Log",
+        "Take Orders",
+        "Reservation",
+        "Back office",
+        "Client Panel",
+        "Orders History",
+        "Table",
+        "Dashboard",
+        "Reporting",
+      ],
+    },
+    {
+      id: "premium",
+      name: "Premium",
+      price: "£79.99",
+      period: "/outlet/mo",
+      isPopular: true,
+      modules: [
+        "Call Log",
+        "Take Orders",
+        "Reservation",
+        "CBD",
+        "Back office",
+        "Client Panel",
+        "Orders History",
+        "Table",
+        "Loyalty Offer",
+        "Dashboard",
+        "Reporting",
+      ],
+    },
+    {
+      id: "ultimate",
+      name: "Ultimate",
+      price: "£99.99",
+      period: "/outlet/mo",
+      isPopular: false,
+      modules: [
+        "Call Log",
+        "Take Orders",
+        "Reservation",
+        "CBD",
+        "Dashboard",
+        "Reporting",
+        "Orders History",
+        "Table",
+        "Loyalty Offer",
+        "Micro View",
+        "Back office",
+        "Client Panel",
+      ],
+    },
+  ];
+
   return (
     <section
       id="pricing"
@@ -23,158 +108,72 @@ export default function Pricing() {
             Simple, Transparent Pricing
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12">
-            Choose the plan that fits your restaurant. Custom plans are also
-            available for enterprise setups.
+            Choose the plan that fits your restaurant.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {/* Starter Plan */}
-          <motion.div
-            className="border dark:custom-gradient rounded-2xl shadow-lg p-8 flex flex-col justify-between"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Standard</h3>
-              <p className="text-3xl font-bold mb-2">
-                {" "}
-                £59.99<span className="text-sm font-medium">/outlet/mo</span>
-              </p>
-              <div>
-                <p className=" ">Features</p>
-                <p className="text-muted-foreground text-sm mb-6">
-                  Standard Features Includes:
-                </p>
-              </div>
-              <ul className="text-left space-y-2 text-sm">
-                <li>✔ Payment integrations</li>
-                <li>✔ Unlimited 24/7 support</li>
-                <li>✔ DashBoard</li>
-                <li>✔ Advanced location reporting</li>
-                <li>✔ Location grouping</li>
-                <li>✔ Multi-location menu control</li>
-                <li>✔ Multi-location reporting suite</li>
-                <li>✔ Online ordering</li>
-                <li>✔ Inventory management</li>
-                <li>✔ Real-time reporting</li>
-                <li>✔ Mixers & modifiers</li>
-                <li>✔ Cash control</li>
-                <li>✔ Allergens & nutritional info</li>
-                <li>✔ Reports & insights</li>
-                <li>✔ Staff scheduling</li>
-                <li>✔ Product & menu setup</li>
-                <li>✔ On-site installation</li>
-                <li>✔ Training</li>
-              </ul>
-            </div>
-            <Button className="mt-6 w-full">Get Started</Button>
-          </motion.div>
-
-          {/* Standard Plan - Most Popular */}
-          <motion.div
-            className="border-2 dark:custom-gradient flex flex-col justify-between  border-primary bg-background shadow-2xl p-8 rounded-2xl scale-[1.03] relative z-10"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <Badge className="absolute top-4 right-4" variant="secondary">
-              Most Popular
-            </Badge>
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Premium</h3>
-              <p className="text-3xl font-bold mb-2">
-                £79.99<span className="text-sm font-medium">/outlet/mo</span>
-              </p>
-              <div>
-                <p className=" ">Features</p>
-                <p className="text-muted-foreground text-sm mb-6">
-                  Everything in Standard, plus:
-                </p>
-              </div>
-              <ul className="text-left space-y-2 text-sm">
-                <li>✔ Table management</li>
-                <li>✔ Online table reservation</li>
-                <li>✔ Customer loyality management</li>
-                <li>✔ Gift Vouchers</li>
-                <li>✔ Live Map</li>
-                <li>✔ Bespoke table plans</li>
-              </ul>
-            </div>
-            <Button className="mt-6 w-full">Get Started</Button>
-          </motion.div>
-
-          {/* Premium Plan */}
-          <motion.div
-            className="border dark:custom-gradient rounded-2xl bg-background shadow-lg p-8 flex flex-col justify-between"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Ultimate</h3>
-              <p className="text-3xl font-bold mb-2">
-                £99.99<span className="text-sm font-medium">/outlet/mo</span>
-              </p>
-              <div>
-                <p className=" ">Features</p>
-                <p className="text-muted-foreground text-sm mb-6">
-                  Everything in Premium, plus:
-                </p>
-              </div>
-              <ul className="text-left space-y-2 text-sm">
-                <li>✔ Location wise Staff scheduling</li>
-                <li>✔ Pre-Order Facility</li>
-                <li>✔ Kitchen Display Sytem (KDS)</li>
-                <li>✔ Kitchen management</li>
-                <li>✔ Booking & deposit handling</li>
-                <li>✔ Driver Management</li>
-                <li>✔ Multi- site dashboard</li>
-              </ul>
-            </div>
-            <Button className="mt-6 w-full">Get Started</Button>
-          </motion.div>
-
-          {/* Bespoke Plan */}
-          <motion.div
-            className="border-2 dark:custom-gradient border-primary/50 rounded-2xl bg-background shadow-lg p-8 flex flex-col justify-between relative overflow-hidden"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-pink-100/10 dark:from-primary/10 dark:to-transparent rounded-2xl pointer-events-none" />
-
-            <div>
-              <h3 className="text-2xl font-semibold mb-4">Bespoke</h3>
-              <p className="text-3xl font-bold mb-2">
-                Custom Combination of Features
-              </p>
-              {/* <p className="text-muted-foreground mb-6">
-                Tailored solutions for your unique business needs. Perfect for
-                large enterprises, franchises, or anyone needing something
-                extra.
-              </p>
-              <ul className="text-left space-y-2 text-sm">
-                <li>✔ Fully Customised Features</li>
-                <li>✔ Dedicated Support & Training</li>
-                <li>✔ Custom API & Integrations</li>
-                <li>✔ Enterprise-Level Security</li>
-                <li>✔ Flexible Billing Options</li>
-              </ul> */}
-            </div>
-
-            <Button
-              onClick={() => setDialog(true)}
-              variant="secondary"
-              className="mt-6 w-full cursor-pointer"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {packages.map((pkg, index) => (
+            <motion.div
+              key={pkg.id}
+              className={`rounded-2xl p-8 flex flex-col justify-between text-left relative ${
+                pkg.isPopular
+                  ? "border-2 border-primary bg-background shadow-2xl scale-[1.03] z-10 dark:custom-gradient"
+                  : "border bg-background shadow-lg dark:custom-gradient"
+              }`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              Get Quote
-            </Button>
-          </motion.div>
-          <DemoDialog getQuote={true} open={dialog} onOpenChange={setDialog} />
+              {pkg.isPopular && (
+                <Badge className="absolute top-4 right-4" variant="secondary">
+                  Most Popular
+                </Badge>
+              )}
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-2">{pkg.name}</h3>
+                <p className="text-3xl font-bold mb-4">
+                  {pkg.price}
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {pkg.period}
+                  </span>
+                </p>
+
+                <div className="mb-4">
+                  <p className="font-medium text-sm text-foreground">
+                    Software Modules:
+                  </p>
+                </div>
+
+                <ul className="space-y-2.5 text-sm">
+                  {pkg.modules.map((mod, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="text-emerald-500 font-bold">✔</span>
+                      <span>{mod}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Button
+                onClick={() => handleOpenDialog(pkg.id)}
+                className="mt-8 w-full cursor-pointer"
+                variant={pkg.isPopular ? "default" : "outline"}
+              >
+                Get Started
+              </Button>
+            </motion.div>
+          ))}
         </div>
+
+        <DemoDialog
+          getQuote={true}
+          open={dialog}
+          onOpenChange={setDialog}
+          defaultPackage={selectedPackage}
+        />
       </div>
     </section>
   );
