@@ -1,84 +1,85 @@
-"use client";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { NAV_LINKS } from "@/assets/static-data";
-import { cn } from "@/lib/utils";
-import { logo, blackLogo, whiteLogo } from "@/assets";
-import DemoDialog from "../common/demo-dialog";
-import Image from "next/image";
-import { ModeToggle } from "../theme/mode-toggle";
+'use client'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { NAV_LINKS } from '@/assets/static-data'
+import { cn } from '@/lib/utils'
+import { logo, blackLogo, whiteLogo } from '@/assets'
+import DemoDialog from '../common/demo-dialog'
+import Image from 'next/image'
+import { ModeToggle } from '../theme/mode-toggle'
 
-function Navbar() {
-  const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenDemo, setIsOpenDemo] = useState(false);
-  const [activeHash, setActiveHash] = useState("");
+function Navbar () {
+  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isOpenDemo, setIsOpenDemo] = useState(false)
+  const [activeHash, setActiveHash] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setIsScrolled(true);
+        setIsScrolled(true)
       } else {
-        setIsScrolled(false);
+        setIsScrolled(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useEffect(() => {
     const updateHash = () => {
-      setActiveHash(window.location.hash);
-    };
+      setActiveHash(window.location.hash)
+    }
 
-    updateHash();
-    window.addEventListener("hashchange", updateHash);
+    updateHash()
+    window.addEventListener('hashchange', updateHash)
 
     // Cleanup
-    return () => window.removeEventListener("hashchange", updateHash);
-  }, [activeHash]);
+    return () => window.removeEventListener('hashchange', updateHash)
+  }, [activeHash])
 
-  console.log(activeHash);
+  console.log(activeHash)
 
   return (
     <nav
       className={`${
-        isScrolled ? "dark:bg-black bg-white" : ""
+        isScrolled ? 'dark:bg-black bg-white' : ''
       } sticky top-0 z-50 border-b shadow-sm `}
     >
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href={"/"}>
+      <div className='container mx-auto px-4 py-3 flex justify-between items-center'>
+        <Link href={'/'}>
           <Image
-            className="w-34 hidden dark:block"
-            src={whiteLogo}
+            className='w-[136px] hidden dark:block'
+            src={whiteLogo.src}
+            alt='Dark Logo'
+            width={136}
             height={100}
-            width={100}
-            alt="Dark Logo"
           />
           <Image
-            className="w-34 block dark:hidden"
-            src={blackLogo}
+            className='w-[136px] block dark:hidden'
+            src={blackLogo.src}
+            alt='Light Logo'
+            width={136}
             height={100}
-            width={100}
-            alt="Light Logo"
           />
         </Link>
+
         {/* Desktop Nav Links */}
-        <ul className="hidden md:flex space-x-6 text-sm font-medium text-muted-foreground">
-          {NAV_LINKS.map((link) => (
+        <ul className='hidden md:flex space-x-6 text-sm font-medium text-muted-foreground'>
+          {NAV_LINKS.map(link => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 className={cn(
-                  "transition-colors hover:text-primary",
-                  pathname === link.href ? "text-primary font-semibold" : ""
+                  'transition-colors hover:text-primary',
+                  pathname === link.href ? 'text-primary font-semibold' : ''
                 )}
               >
                 {link.name}
@@ -88,8 +89,8 @@ function Navbar() {
         </ul>
 
         {/* CTA Button */}
-        <div className="hidden md:flex">
-          <div className="flex items-center gap-2">
+        <div className='hidden md:flex'>
+          <div className='flex items-center gap-2'>
             <ModeToggle />
             <Button onClick={() => setIsOpenDemo(true)}>Book a Demo</Button>
           </div>
@@ -97,7 +98,7 @@ function Navbar() {
 
         {/* Mobile Toggle Button */}
         <button
-          className="md:hidden p-2 text-gray-600"
+          className='md:hidden p-2 text-gray-600'
           onClick={() => setIsOpen(!isOpen)}
         >
           ☰
@@ -106,33 +107,33 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-black flex w-full items-center flex-col justify-center shadow-md px-4 py-4">
-          <ul className="flex flex-col space-y-3 text-sm text-muted-foreground">
-            {NAV_LINKS.map((link) => (
+        <div className='md:hidden bg-white dark:bg-black flex w-full items-center flex-col justify-center shadow-md px-4 py-4'>
+          <ul className='flex flex-col space-y-3 text-sm text-muted-foreground'>
+            {NAV_LINKS.map(link => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "block transition-colors hover:text-primary",
-                    activeHash === link.href ? "text-primary font-semibold" : ""
+                    'block transition-colors hover:text-primary',
+                    activeHash === link.href ? 'text-primary font-semibold' : ''
                   )}
                 >
                   {link.name}
                 </Link>
               </li>
             ))}
-            <li className="w-full flex">
-            </li>
+            <li className='w-full flex'></li>
           </ul>
-              <Button className={'w-full'} onClick={() => setIsOpenDemo(true)}>Book a Demo</Button>
-
+          <Button className={'w-full'} onClick={() => setIsOpenDemo(true)}>
+            Book a Demo
+          </Button>
         </div>
       )}
 
       <DemoDialog open={isOpenDemo} onOpenChange={setIsOpenDemo} />
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
