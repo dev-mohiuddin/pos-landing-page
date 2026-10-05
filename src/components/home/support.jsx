@@ -1,11 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Headphones, ShieldCheck, Clock, MessageSquare, LifeBuoy } from "lucide-react";
+import {
+  Headphones,
+  ShieldCheck,
+  Clock,
+  LifeBuoy,
+  UploadCloud,
+} from "lucide-react";
 
 export default function Support() {
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const handleRemoveFile = (e) => {
+    e.stopPropagation();
+    setFile(null);
+    const input = document.getElementById("support-file");
+    if (input) input.value = "";
+  };
+
   return (
     <section
       id="support"
@@ -157,6 +180,59 @@ export default function Support() {
                   className="w-full"
                 />
               </div>
+            </div>
+
+            {/* File Upload / Attachment (Compact) */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="support-file" className="text-xs font-medium cursor-pointer">
+                  Attachment / Screenshot (Optional)
+                </Label>
+                <span className="text-[11px] text-muted-foreground">Max 10MB</span>
+              </div>
+              <label
+                htmlFor="support-file"
+                className="flex items-center justify-between w-full px-3.5 py-2.5 border border-dashed border-border hover:border-primary/60 rounded-lg cursor-pointer bg-muted/15 hover:bg-muted/30 transition-all text-xs"
+              >
+                <div className="flex items-center gap-2.5 truncate">
+                  <UploadCloud className="w-4 h-4 text-primary shrink-0" />
+                  <span className="text-muted-foreground truncate">
+                    {file ? (
+                      <span className="text-foreground font-medium">{file.name}</span>
+                    ) : (
+                      <span><strong className="text-primary font-medium underline">Choose file</strong> or drag & drop</span>
+                    )}
+                  </span>
+                </div>
+                {file ? (
+                  <button
+                    type="button"
+                    onClick={handleRemoveFile}
+                    className="text-destructive hover:underline text-xs shrink-0 ml-2 font-medium cursor-pointer"
+                  >
+                    Remove
+                  </button>
+                ) : (
+                  <span className="text-[11px] text-muted-foreground shrink-0 hidden sm:inline">PNG, JPG, PDF, DOCX</span>
+                )}
+                <input
+                  id="support-file"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
+            </div>
+
+            {/* Notes / Issue Description */}
+            <div className="space-y-1.5">
+              <Label htmlFor="support-notes" className="text-xs font-medium">Notes / Issue Details *</Label>
+              <Textarea
+                id="support-notes"
+                placeholder="Please describe your issue, questions, or any error messages in detail..."
+                className="w-full min-h-[90px] resize-y text-sm"
+                required
+              />
             </div>
 
             <div className="flex flex-col gap-2 pt-2">

@@ -33,7 +33,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
               What type of business are you running?
             </Label>
             <DialogTitle></DialogTitle>
-            <Label className="text-sm font-medium mt-8">Size</Label>
+            <Label className="text-sm font-semibold text-yellow-500 dark:text-yellow-400 mt-8">Size</Label>
             <RadioGroup defaultValue="small" className="flex gap-6">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="small" id="small" />
@@ -52,7 +52,7 @@ export default function DemoDialog({ getQuote, open, onOpenChange }) {
 
           {/* Service */}
           <div className="space-y-3">
-            <Label className="text-sm font-medium">Service</Label>
+            <Label className="text-sm font-semibold text-yellow-500 dark:text-yellow-400">Service</Label>
             <RadioGroup defaultValue="restaurant" className="flex gap-6">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="restaurant" id="restaurant" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -7,7 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
-import { PlayCircle, MessageSquareQuote } from "lucide-react";
+import { PlayCircle, MessageSquareQuote, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ammanah1, ammanah2, ammanah3 } from "@/assets";
@@ -19,11 +20,20 @@ const screenshots = [
 ];
 
 export default function Preview() {
-  const [sliderRef] = useKeenSlider({
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
     loop: true,
-    mode: "free-snap",
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
     slides: {
-      perView: 1.2,
+      perView: 1.15,
       spacing: 16,
     },
     breakpoints: {
@@ -64,37 +74,77 @@ export default function Preview() {
                 <PlayCircle className="w-5 h-5" /> Watch How It Works
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white font-medium shadow-sm transition-colors border-0">
               <a href="#book-demo" className="flex items-center gap-2">
-                <MessageSquareQuote className="w-5 h-5 text-primary" /> Interested
+                <MessageSquareQuote className="w-5 h-5 text-white" /> Interested
               </a>
             </Button>
           </div>
         </motion.div>
 
-        <div ref={sliderRef} className="keen-slider">
-          {screenshots.map((shot, i) => (
-            <motion.div
-              key={i}
-              className="keen-slider__slide bg-muted/10 dark:bg-muted/20 border border-border rounded-xl shadow-md overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                width={600}
-                height={350}
-                className="object-cover w-full h-auto"
-              />
-              <div className="p-4 text-sm text-muted-foreground">
-                {shot.alt}
+        {/* Slider with Prev / Next Buttons */}
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-12">
+          {/* Previous Button */}
+          <button
+            type="button"
+            onClick={() => instanceRef.current?.prev()}
+            aria-label="Previous slide"
+            className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background/95 dark:bg-card/95 border border-border/80 shadow-md flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all cursor-pointer backdrop-blur-xs"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Keen Slider Container */}
+          <div ref={sliderRef} className="keen-slider cursor-grab active:cursor-grabbing">
+            {screenshots.map((shot, i) => (
+              <div
+                key={i}
+                className="keen-slider__slide bg-muted/10 dark:bg-muted/20 border border-border rounded-xl shadow-md overflow-hidden transition-transform duration-200"
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={600}
+                  height={350}
+                  className="object-cover w-full h-auto select-none pointer-events-none"
+                  priority={i === 0}
+                />
+                <div className="p-4 text-sm font-medium text-muted-foreground bg-card/60 dark:bg-muted/20 border-t border-border/50">
+                  {shot.alt}
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <button
+            type="button"
+            onClick={() => instanceRef.current?.next()}
+            aria-label="Next slide"
+            className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background/95 dark:bg-card/95 border border-border/80 shadow-md flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all cursor-pointer backdrop-blur-xs"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
+
+        {/* Dots Navigation */}
+        {loaded && instanceRef.current && (
+          <div className="flex justify-center items-center gap-2 mt-6">
+            {screenshots.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => instanceRef.current?.moveToIdx(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                  currentSlide === idx
+                    ? "w-8 bg-primary"
+                    : "w-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Restored All set to try out our EPOS section */}
@@ -116,7 +166,7 @@ export default function Preview() {
             <Label className="text-sm font-medium">
               What type of business are you running?
             </Label>
-            <Label className="text-xs text-muted-foreground block mt-4">Size</Label>
+            <Label className="text-xs font-semibold text-yellow-500 dark:text-yellow-400 block mt-4">Size</Label>
             <RadioGroup defaultValue="small" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="small" id="preview-small" />
@@ -135,7 +185,7 @@ export default function Preview() {
 
           {/* Service */}
           <div className="space-y-3">
-            <Label className="text-xs text-muted-foreground block">Service</Label>
+            <Label className="text-xs font-semibold text-yellow-500 dark:text-yellow-400 block">Service</Label>
             <RadioGroup defaultValue="restaurant" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="restaurant" id="preview-restaurant" />

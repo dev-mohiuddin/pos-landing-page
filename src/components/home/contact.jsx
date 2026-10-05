@@ -128,7 +128,7 @@ export default function Contact() {
               <Label className="text-sm font-medium">
                 What type of business are you running?
               </Label>
-              <Label className="text-xs text-muted-foreground block">Size</Label>
+              <Label className="text-xs font-semibold text-yellow-500 dark:text-yellow-400 block">Size</Label>
               <RadioGroup defaultValue="small" className="flex flex-wrap gap-6">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="small" id="contact-size-small" />
@@ -147,7 +147,7 @@ export default function Contact() {
 
             {/* Service */}
             <div className="space-y-3">
-              <Label className="text-xs text-muted-foreground block">Service</Label>
+              <Label className="text-xs font-semibold text-yellow-500 dark:text-yellow-400 block">Service</Label>
               <RadioGroup defaultValue="restaurant" className="flex flex-wrap gap-6">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="restaurant" id="contact-service-restaurant" />
