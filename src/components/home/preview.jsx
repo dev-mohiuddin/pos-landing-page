@@ -1,13 +1,13 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, MessageSquareQuote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ammanah1, ammanah2, ammanah3 } from "@/assets";
@@ -17,6 +17,7 @@ const screenshots = [
   { src: ammanah2, alt: "Create System" },
   { src: ammanah3, alt: "Staff Profile" },
 ];
+
 export default function Preview() {
   const [sliderRef] = useKeenSlider({
     loop: true,
@@ -52,16 +53,23 @@ export default function Preview() {
             walkthrough or browse dashboard previews below.
           </p>
 
-          <Button asChild size="lg" className="mb-12">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <PlayCircle className="w-5 h-5" /> Watch How It Works
-            </a>
-          </Button>
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+            <Button asChild size="lg">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <PlayCircle className="w-5 h-5" /> Watch How It Works
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href="#book-demo" className="flex items-center gap-2">
+                <MessageSquareQuote className="w-5 h-5 text-primary" /> Interested
+              </a>
+            </Button>
+          </div>
         </motion.div>
 
         <div ref={sliderRef} className="keen-slider">
@@ -88,10 +96,12 @@ export default function Preview() {
           ))}
         </div>
       </div>
+
+      {/* Restored All set to try out our EPOS section */}
       <div id="book-demo" className="container px-4 mx-auto pt-20">
         <div className="flex justify-center items-center mb-6">
-          <span className="text-center max-w-xl text-muted-foreground text-xl font-bold ">
-            <span className="text-2xl text-white">
+          <span className="text-center max-w-xl text-muted-foreground text-xl font-bold">
+            <span className="text-2xl text-foreground">
               All set to try out our EPOS and make it yours?
             </span>{" "}
             <br />
@@ -100,44 +110,44 @@ export default function Preview() {
             </span>
           </span>
         </div>
-        <div className="space-y-5 max-w-3xl mx-auto  border p-6 rounded-md">
+        <div className="space-y-5 max-w-3xl mx-auto border border-border p-6 rounded-md bg-card/60 dark:bg-muted/10 shadow-xs">
           {/* Size */}
           <div className="space-y-3">
             <Label className="text-sm font-medium">
               What type of business are you running?
             </Label>
-            <Label className="text-sm font-medium mt-8">Size</Label>
-            <RadioGroup defaultValue="small" className="flex gap-6">
+            <Label className="text-xs text-muted-foreground block mt-4">Size</Label>
+            <RadioGroup defaultValue="small" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="small" id="small" />
-                <Label htmlFor="small">Small</Label>
+                <RadioGroupItem value="small" id="preview-small" />
+                <Label htmlFor="preview-small">Small</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="medium" id="medium" />
-                <Label htmlFor="medium">Medium</Label>
+                <RadioGroupItem value="medium" id="preview-medium" />
+                <Label htmlFor="preview-medium">Medium</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="chain" id="chain" />
-                <Label htmlFor="chain">Chain</Label>
+                <RadioGroupItem value="chain" id="preview-chain" />
+                <Label htmlFor="preview-chain">Chain</Label>
               </div>
             </RadioGroup>
           </div>
 
           {/* Service */}
           <div className="space-y-3">
-            <Label className="text-sm font-medium">Service</Label>
-            <RadioGroup defaultValue="restaurant" className="flex gap-6">
+            <Label className="text-xs text-muted-foreground block">Service</Label>
+            <RadioGroup defaultValue="restaurant" className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="restaurant" id="restaurant" />
-                <Label htmlFor="restaurant">Restaurant</Label>
+                <RadioGroupItem value="restaurant" id="preview-restaurant" />
+                <Label htmlFor="preview-restaurant">Restaurant</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="takeaway" id="takeaway" />
-                <Label htmlFor="takeaway">Takeaway</Label>
+                <RadioGroupItem value="takeaway" id="preview-takeaway" />
+                <Label htmlFor="preview-takeaway">Takeaway</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="both" id="both" />
-                <Label htmlFor="both">Both</Label>
+                <RadioGroupItem value="both" id="preview-both" />
+                <Label htmlFor="preview-both">Both</Label>
               </div>
             </RadioGroup>
           </div>
@@ -146,22 +156,22 @@ export default function Preview() {
           <div className="space-y-6">
             <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
               <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" placeholder="Enter Full Name" required />
+                <Label htmlFor="preview-fullName">Full Name *</Label>
+                <Input id="preview-fullName" placeholder="Enter Full Name" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address *</Label>
+                <Label htmlFor="preview-email">Email Address *</Label>
                 <Input
-                  id="email"
+                  id="preview-email"
                   type="email"
                   placeholder="you@example.com"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number *</Label>
+                <Label htmlFor="preview-phone">Phone Number *</Label>
                 <Input
-                  id="phone"
+                  id="preview-phone"
                   type="tel"
                   placeholder="+447XXX XXX XXX"
                   required
@@ -173,13 +183,13 @@ export default function Preview() {
           <div className="space-y-4">
             <div>
               <label
-                htmlFor="company"
+                htmlFor="preview-company"
                 className="block text-sm font-medium mb-1"
               >
                 Company / Trading Name *
               </label>
               <Input
-                id="company"
+                id="preview-company"
                 placeholder="XYZ Ltd TA XYZ"
                 required
                 className="w-full"
@@ -188,13 +198,13 @@ export default function Preview() {
 
             <div>
               <label
-                htmlFor="preferredDays"
+                htmlFor="preview-preferredDays"
                 className="block text-sm font-medium mb-1"
               >
                 Any Special Notes
               </label>
               <Textarea
-                id="preferredDays"
+                id="preview-preferredDays"
                 placeholder="e.g., I have two outlets... "
                 className="w-full h-24"
               />
@@ -202,21 +212,21 @@ export default function Preview() {
 
             <div>
               <label
-                htmlFor="nextAvailable"
+                htmlFor="preview-datetime"
                 className="block text-sm font-medium mb-1"
               >
                 Date and Time
               </label>
               <Input
                 name={"datetime"}
-                id="datetime"
+                id="preview-datetime"
                 type="datetime-local"
-                className="bg-white"
+                className="w-full"
               />
             </div>
           </div>
           <div className="flex justify-start">
-            <Button className=" text-base ">Submit</Button>
+            <Button className="text-base">Submit</Button>
           </div>
         </div>
       </div>

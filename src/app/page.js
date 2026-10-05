@@ -7,8 +7,9 @@ import WhyChooseUs from "@/components/home/why-choose";
 import Pricing from "@/components/home/pricing";
 import Reviews from "@/components/home/reviews";
 import FAQ from "@/components/home/faq";
-import Footer from "@/components/home/footer";
 import Contact from "@/components/home/contact";
+import Support from "@/components/home/support";
+import Footer from "@/components/home/footer";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Reviews />
       <FAQ />
       <Contact />
+      <Support />
       <Footer />
     </main>
   );

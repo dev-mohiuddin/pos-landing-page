@@ -7,4 +7,5 @@ export const NAV_LINKS = [
   { name: "Reviews", href: "/#reviews" },
   { name: "FAQs", href: "/#faq" },
   { name: "Contact", href: "/#contact" },
+  { name: "Support", href: "/#support" },
 ]

@@ -6,8 +6,6 @@ import {
   Twitter,
   Instagram,
   MapPin,
-  Phone,
-  Mail,
 } from "lucide-react";
 
 export default function Footer() {
@@ -34,23 +32,20 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column 2 - Contact Info */}
+        {/* Column 2 - Address */}
         <div>
           <h3 className="text-sm font-semibold mb-3 text-foreground">
-            Contact
+            Address
           </h3>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
-              48-50 St. Augustines Street, Norwich, United Kingdom, NR3 3AD
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              amaanahsoft@gmail.com
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              0330 390 4240
+            <li className="flex items-start gap-2">
+              <MapPin className="h-4 w-4 mt-1 shrink-0 text-primary" />
+              <div className="leading-snug">
+                <div>48-50 St Augustines Street</div>
+                <div>Norwich</div>
+                <div>Norfolk</div>
+                <div>NR3 3AD</div>
+              </div>
             </li>
           </ul>
         </div>
@@ -78,8 +73,13 @@ export default function Footer() {
             </li>
 
             <li>
-              <Link href="#book-demo" className="hover:text-primary">
-                Book A Demo
+              <Link href="#contact" className="hover:text-primary">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="#support" className="hover:text-primary">
+                Support
               </Link>
             </li>
           </ul>
